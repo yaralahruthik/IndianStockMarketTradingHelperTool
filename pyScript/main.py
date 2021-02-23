@@ -52,6 +52,7 @@ def monitor_realtime(your_stock_codes, price_level, avg_level, counter={}, prev_
 
 # This function triggers a response when avg value crosses set level.
 def trigger_avg(stock, avg, prev_avg):
+    msg = ''
     if stock not in prev_avg:
         prev_avg[stock] = avg
         msg = f'{stock} has hit the average level set {avg_level[stock]}'
@@ -96,13 +97,8 @@ avg_level = {
 counter = {}
 prev_avg = {}
 
-datapacket = monitor_realtime(
-    your_stock_codes, price_level, avg_level, counter, prev_avg)
-print(datapacket)
-set_datapacket(datapacket)
-'''
 while True:
     datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
     print(datapacket)
+    set_datapacket(datapacket)
     time.sleep(2)
-'''
