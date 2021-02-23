@@ -1,6 +1,8 @@
+# Do `pip install nsetools`, documentation at https://nsetools.readthedocs.io/en/latest/
 from nsetools import Nse
 import time
 import json
+
 
 def get_qoute_tester(stock):
     stockTester = {
@@ -24,8 +26,8 @@ def monitor_realtime(your_stock_codes, price_level, avg_level, counter={}, prev_
     for stock in your_stock_codes:
         data_packet[stock] = {}
 
-        #q = nse.get_quote(stock)
-        q = get_qoute_tester(stock)
+        q = nse.get_quote(stock)
+        #q = get_qoute_tester(stock)
 
         price = q['buyPrice1']
         avg = q['averagePrice']
@@ -94,7 +96,8 @@ avg_level = {
 counter = {}
 prev_avg = {}
 
-datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
+datapacket = monitor_realtime(
+    your_stock_codes, price_level, avg_level, counter, prev_avg)
 print(datapacket)
 set_datapacket(datapacket)
 '''
