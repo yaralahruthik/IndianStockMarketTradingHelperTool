@@ -96,13 +96,8 @@ avg_level = {
 counter = {}
 prev_avg = {}
 
-datapacket = monitor_realtime(
-    your_stock_codes, price_level, avg_level, counter, prev_avg)
-print(datapacket)
-set_datapacket(datapacket)
-'''
 while True:
     datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
     print(datapacket)
     time.sleep(2)
-'''
+    set_datapacket(datapacket)
