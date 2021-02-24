@@ -4,9 +4,21 @@ An attempt to make something useful for trading in the stock market. Let's see h
 
 ## Features
 
-Oops, need to write readme later.
+* Sends messages when the levels set by you for average and current price cross.
 
 ## To do
 
-- [ ] To add a front-end (preferably with react)
-- [ ] To get notifications on level hit
+### Since, the project deals with realtime data, speed of the servers is highly important. Do not add bloatware! 
+
+- [ ] To add a front-end (preferably with react or vue.)
+- [ ] To add a back-end (prefereably flask, but nodejs or django can also be used.)
+- [ ] The **main.py** in **pyScript** folder should run concurrently with the server. (Have to send the datapacket.json or datapacket from the python script to the frontend as a response. So, the frontend can update whenever it receives new data.) 
+- [ ] To get notifications on level hit. (To be handled in the frontend)
+
+## Contributions
+
+To contribute,
+1. Fork the repo.
+2. Clone the forked repo onto your local.
+3. Create a branch.
+4. Push the branch.
