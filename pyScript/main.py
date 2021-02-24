@@ -7,7 +7,6 @@ t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
 print(current_time)
 
-
 def get_qoute_tester(stock):
     stockTester = {
         'TATAMOTORS': {
@@ -109,9 +108,8 @@ avg_level = {
 
 counter = {}
 prev_avg = {}
-'''
+
 while True:
     datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
     time.sleep(2)
     set_datapacket(datapacket)
-'''
