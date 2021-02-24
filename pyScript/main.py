@@ -93,8 +93,10 @@ def set_datapacket(datapacket):
 
 nse = Nse()
 
+#Add your stock codes here (NSE CODES)
 your_stock_codes = ['TATAMOTORS', 'TATASTEEL']
 
+# Set your price and avg levels below
 price_level = {
     'TATAMOTORS': 326,
     'TATASTEEL': 730
@@ -107,8 +109,9 @@ avg_level = {
 
 counter = {}
 prev_avg = {}
-
+'''
 while True:
     datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
     time.sleep(2)
     set_datapacket(datapacket)
+'''
