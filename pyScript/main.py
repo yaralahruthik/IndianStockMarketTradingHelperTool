@@ -3,6 +3,10 @@ from nsetools import Nse
 import time
 import json
 
+t = time.localtime()
+current_time = time.strftime("%H:%M:%S", t)
+print(current_time)
+
 
 def get_qoute_tester(stock):
     stockTester = {
@@ -52,17 +56,25 @@ def monitor_realtime(your_stock_codes, price_level, avg_level, counter={}, prev_
 
 # This function triggers a response when avg value crosses set level.
 def trigger_avg(stock, avg, prev_avg):
+    msg = ''
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t) 
     if stock not in prev_avg:
         prev_avg[stock] = avg
         msg = f'{stock} has hit the average level set {avg_level[stock]}'
+        print(f'{stock} has hit the average level set {avg_level[stock]} at {current_time}')
     elif (avg > avg_level[stock] > prev_avg[stock]):
         msg = f'{stock} has hit the average level set {avg_level[stock]}'
+        print(f'{stock} has hit the average level set {avg_level[stock]} at {current_time}')
 
     return prev_avg, msg
 
 # This function triggers a response when current price crosses set level.
 def trigger_price(stock, price):
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
     msg = f'{stock} has hit the price level set {price}'
+    print(f'{stock} has hit the price level set {price} at {current_time}')
     return msg
 
 # This function counts the number of times the stock hits +-0.1% of our level.
@@ -84,13 +96,13 @@ nse = Nse()
 your_stock_codes = ['TATAMOTORS', 'TATASTEEL']
 
 price_level = {
-    'TATAMOTORS': 300,
-    'TATASTEEL': 700
+    'TATAMOTORS': 326,
+    'TATASTEEL': 730
 }
 
 avg_level = {
-    'TATAMOTORS': 318,
-    'TATASTEEL': 718
+    'TATAMOTORS': 325,
+    'TATASTEEL': 725
 }
 
 counter = {}
@@ -98,6 +110,5 @@ prev_avg = {}
 
 while True:
     datapacket = monitor_realtime(your_stock_codes, price_level, avg_level, counter, prev_avg)
-    print(datapacket)
     time.sleep(2)
     set_datapacket(datapacket)
